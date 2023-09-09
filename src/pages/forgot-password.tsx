@@ -1,44 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
+import router from 'next/router';
+import { EmailvalidationSchema } from '@/utils/Validations';
+import { Formik,Form, Field } from 'formik';
+import TextInput from '@/components/TextInput';
+import CustomButton from '@/components/CustomButton';
 
 const ForgotPasswordPage: React.FC = () => {
-  const [email, setEmail] = useState('');
-
-  const handleForgotPassword = () => {
-    // Add logic to send a password reset email here
+  const initialValues = {
+    email: '',
   };
+  const onSubmit = (values: {
+    email: string;
+  }) => {
+    console.log('Form Values:', values);
+    router.push('/login');
+  }
 
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-gray-100">
       <h1 className="mb-4 text-4xl font-bold">Forgot Password</h1>
-      <form className="rounded bg-white p-6 shadow-md">
-        {/* Email Input */}
-        <div className="mb-4">
-          <label
-            htmlFor="email"
-            className="mb-2 block text-sm font-bold text-gray-700"
-          >
-            Email:
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-md border border-gray-400 px-3 py-2 focus:border-indigo-500 focus:outline-none"
-            placeholder="Enter your email"
-          />
-        </div>
+      <Formik   initialValues={initialValues}
+        validationSchema={EmailvalidationSchema}
+        onSubmit={onSubmit}>
+      <Form className="rounded bg-white p-6 shadow-md space-y-6">
+      <Field type="email" name="email" label="Email" as={TextInput} fullWidth/>
 
         {/* Forgot Password Button */}
-        <button
-          type="button"
-          onClick={handleForgotPassword}
-          className="focus:shadow-outline-red rounded-full bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-600 focus:outline-none active:bg-red-700"
-        >
+        <CustomButton
+          type="submit"        >
           Forgot Password
-        </button>
-      </form>
+        </CustomButton>
+      </Form>
+      </Formik>
     </div>
   );
 };
