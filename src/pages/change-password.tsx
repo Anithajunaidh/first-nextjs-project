@@ -3,6 +3,7 @@ import {  Field, Form, Formik, } from 'formik';
 import CustomButton from '@/components/CustomButton';
 import TextInput from '@/components/TextInput';
 import { ChangePasswordSchema } from '@/utils/Validations';
+import CustomButtonNew from '@/components/button';
 const ChangePasswordPage: React.FC = () => {
 const router=useRouter();
 const initialValues={currentPassword:'',newPassword:'',confirmPassword:''}
@@ -20,12 +21,10 @@ router.push('/login')
       <Field type="password" name="newPassword" label="New Password" as={TextInput} fullWidth/> 
       <Field type="password" name="confirmPassword" label="Confirm Password" as={TextInput} fullWidth/>
         {/* Change Password Button */}
-        <CustomButton
-          type="submit"
-         // className="focus:shadow-outline-blue rounded-full bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-600 focus:outline-none active:bg-blue-700"
-        >
+        <CustomButtonNew
+          type="submit" buttonType='PRIMARY'        >
           Change Password
-        </CustomButton>
+        </CustomButtonNew>
       </Form>
       </Formik>
     </div>

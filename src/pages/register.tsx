@@ -2,8 +2,8 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import {  Form, Formik, Field } from 'formik';
 import { EmailvalidationSchema } from '@/utils/Validations';
-import CustomButton from '@/components/CustomButton';
 import TextInput from '@/components/TextInput';
+import CustomButtonNew from '@/components/button';
 const RegisterPage: React.FC = () => {
   const router = useRouter();
   const initialValues = {
@@ -35,26 +35,25 @@ const RegisterPage: React.FC = () => {
             label="Username"
             name="username"
             type="text"
-            as={TextInput}
+            as={TextInput} fullWidth
 />
             <Field
             label="Email"
               type="email"
               name="email"
-          as={TextInput}  />
+          as={TextInput} fullWidth />
             <Field
               label="Password"
               type="password"
               name="password"
-              className="w-full rounded-md border border-gray-400 px-3 py-2 focus:border-indigo-500 focus:outline-none"
-            />
+              as={TextInput} fullWidth/>
           {/* Register Button */}
-          <CustomButton
-            type="submit" 
+          <CustomButtonNew
+            type="submit" buttonType='PRIMARY'
            // className="focus:shadow-outline-green rounded-full bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-600 focus:outline-none active:bg-green-700"
           >
             Register
-          </CustomButton>
+          </CustomButtonNew>
         </Form>
       </Formik>
     </div>

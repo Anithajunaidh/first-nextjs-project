@@ -34,7 +34,8 @@
 import React from 'react';
 import { TextField, TextFieldProps } from '@mui/material';
 import { useField } from 'formik';
-
+import { ThemeProvider } from '@mui/material/styles';
+import materialUITheme from '@/utils/theme'; 
 type CustomTextFieldProps = TextFieldProps & {
   name: string;  // Name is made required here
 };
@@ -49,7 +50,9 @@ const TextInput: React.FC<CustomTextFieldProps> = ({ name, ...props }) => {
     helperText: meta.touched && meta.error ? meta.error : '',
   };
 
-  return <TextField {...config} />;
+  return ( <ThemeProvider theme={materialUITheme}>
+    <TextField {...config} />
+       </ThemeProvider>);
 };
 
 export default TextInput;

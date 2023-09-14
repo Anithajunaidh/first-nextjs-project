@@ -4,14 +4,18 @@ import {  Field, Form, Formik } from 'formik';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {  LoginvalidationSchema } from '@/utils/Validations';
-import CustomButton from '@/components/CustomButton';
+//import CustomButton from '@/components/CustomButton';
 import TextInput from '@/components/TextInput';
-import '../styles/login.css';
+//import '../styles/login.css';
+import CustomButtonNew from '@/components/button';
+//import { useTheme } from '@/utils/ThemeContext';
+
+
 
 
 const LoginPage: React.FC = () => {
   const router = useRouter();
-
+  //const { theme, toggleTheme } = useTheme();
   // Define a validation schema
   const initialValues = {
     username: '',
@@ -26,34 +30,31 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    // <div className="login-container">
-    //   <h1>Login</h1>
-    <div className="flex h-screen flex-col items-center justify-center bg-gray-100">
+    <div className="flex h-screen flex-col items-center justify-center text-onNeutralBg">
+      {/* <button onClick={toggleTheme}>Toggle Theme</button>
+      <p>Current Theme: {theme}</p> */}
     <h1 className="mb-4 text-4xl font-bold">Login</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={LoginvalidationSchema}
         onSubmit={onSubmit}
       >
-        <Form className="rounded bg-white p-6 shadow-md space-y-6">
-             <Field type="text" name="username" label="Username" as={TextInput} fullWidth/>
+        <Form className="rounded  p-6 shadow-md space-y-6">
+             <Field type="text" name="username" label="Username" as={TextInput} fullWidth />
              <Field type="password" name="password" label="Password" as={TextInput} fullWidth />  
-          {/* <CustomButton type="submit" variant ='contained' color='primary'>
-            Login
-          </CustomButton> */}
-          <CustomButton
-            type="submit"
-            //className="focus:shadow-outline-green rounded-full bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-600 focus:outline-none active:bg-green-700"
-          >Login</CustomButton>
+          <CustomButtonNew
+            type="submit" buttonType='PRIMARY'
+          >Login</CustomButtonNew>
+
         </Form>
       </Formik>
-      <Link className="login-link" href="/change-password">
+      <Link className="login-link text-onNeutralBg" href="/change-password">
         Change Password
       </Link>
-      <Link className="login-link" href="/forgot-password">
+      <Link className="login-link text-onNeutralBg" href="/forgot-password">
         Forgot Password
       </Link>
-      <Link className="login-link" href="/register">
+      <Link className="login-link text-onNeutralBg" href="/register">
         Register
       </Link>
     </div>

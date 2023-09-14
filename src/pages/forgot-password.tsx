@@ -4,6 +4,7 @@ import { EmailvalidationSchema } from '@/utils/Validations';
 import { Formik,Form, Field } from 'formik';
 import TextInput from '@/components/TextInput';
 import CustomButton from '@/components/CustomButton';
+import CustomButtonNew from '@/components/button';
 
 const ForgotPasswordPage: React.FC = () => {
   const initialValues = {
@@ -26,10 +27,10 @@ const ForgotPasswordPage: React.FC = () => {
       <Field type="email" name="email" label="Email" as={TextInput} fullWidth/>
 
         {/* Forgot Password Button */}
-        <CustomButton
-          type="submit"        >
+        <CustomButtonNew
+          type="submit" buttonType='PRIMARY'        >
           Forgot Password
-        </CustomButton>
+        </CustomButtonNew>
       </Form>
       </Formik>
     </div>
